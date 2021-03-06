@@ -4,6 +4,12 @@
 
 目前支持：企业微信群机器人、飞书自定义机器人、钉钉自定义机器人接入
 
+### 安装
+
+```bash
+npm install bot-notify
+```
+
 ### 企业微信群机器人
 
 - 文档：<https://open.work.weixin.qq.com/api/doc/90000/90136/91770>
