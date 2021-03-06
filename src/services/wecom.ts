@@ -60,7 +60,11 @@ export class WecomNotify extends NotifyBase implements INotifyBase {
    * @returns Promise
    */
   async send(message: WecomMessage): Promise<any> {
-    return await this.requestPost(this.apiUrl, message);
+    const result = await this.requestPost(this.apiUrl, message);
+    return {
+      success: result.errcode === 0,
+      data: result,
+    };
   }
 
   /**

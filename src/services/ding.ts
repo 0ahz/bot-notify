@@ -93,7 +93,11 @@ export class DingNotify extends NotifyBase implements INotifyBase {
       );
       apiUrl += `&timestamp=${timestamp}&sign=${sign}`;
     }
-    return await this.requestPost(apiUrl, message);
+    const result = await this.requestPost(apiUrl, message);
+    return {
+      success: result.errcode === 0,
+      data: result,
+    };
   }
 
   /**
