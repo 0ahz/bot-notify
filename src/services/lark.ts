@@ -91,7 +91,7 @@ export class LarkNotify extends NotifyBase implements INotifyBase {
     }
     const result = await this.requestPost(this.apiUrl, message);
     return {
-      success: result.errcode === '0',
+      success: result.StatusCode === 0,
       data: result,
     };
   }
