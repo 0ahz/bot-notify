@@ -1,5 +1,16 @@
-export function hello() {
-  console.log('hello');
+import { WecomConfig, WecomNotify } from './service/wecom';
+export interface NotifyConfig {
+  wecom?: WecomConfig;
 }
 
-hello();
+export interface NotifyInstance {
+  wecom?: WecomNotify;
+}
+
+export function createNotify(config: NotifyConfig) {
+  const instances: NotifyInstance = {};
+  if (config.wecom) {
+    instances.wecom = new WecomNotify(config.wecom);
+  }
+  return instances;
+}
