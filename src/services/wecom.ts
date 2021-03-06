@@ -45,7 +45,7 @@ export interface WecomMessage {
 }
 
 export class WecomNotify extends NotifyBase implements INotifyBase {
-  apiUrl: string = '';
+  private apiUrl: string = '';
 
   /**
    * @param  {WecomConfig} config

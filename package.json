@@ -1,5 +1,5 @@
 {
-  "name": "notify",
+  "name": "bot-notify",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/0ahz/notify.git"
+    "url": "git+https://github.com/0ahz/bot-notify.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/0ahz/notify/issues"
+    "url": "https://github.com/0ahz/bot-notify/issues"
   },
-  "homepage": "https://github.com/0ahz/notify#readme",
+  "homepage": "https://github.com/0ahz/bot-notify#readme",
   "devDependencies": {
     "@types/node": "^14.14.31",
     "@types/node-fetch": "^2.5.8",
