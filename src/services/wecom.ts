@@ -1,7 +1,7 @@
 import { INotifyBase } from '../interface/base';
-import { NotifyBase } from './base';
+import { BaseConfig, NotifyBase } from './base';
 
-export interface WecomConfig {
+export interface WecomConfig extends BaseConfig {
   token: string;
 }
 
@@ -51,7 +51,7 @@ export class WecomNotify extends NotifyBase implements INotifyBase {
    * @param  {WecomConfig} config
    */
   constructor(config: WecomConfig) {
-    super();
+    super(config);
     this.apiUrl = `https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=${config.token}`;
   }
 

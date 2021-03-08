@@ -1,9 +1,9 @@
 import crypto from 'crypto';
 
 import { INotifyBase } from '../interface/base';
-import { NotifyBase } from './base';
+import { BaseConfig, NotifyBase } from './base';
 
-export interface LarkConfig {
+export interface LarkConfig extends BaseConfig {
   token: string;
   secret?: string;
 }
@@ -70,7 +70,7 @@ export class LarkNotify extends NotifyBase implements INotifyBase {
   private secret: string = '';
 
   constructor(config: LarkConfig) {
-    super();
+    super(config);
     let { token, secret } = config;
     this.apiUrl = `https://open.feishu.cn/open-apis/bot/v2/hook/${token}`;
     if (secret) {

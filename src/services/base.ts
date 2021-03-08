@@ -1,7 +1,17 @@
 import fetch, { RequestInit } from 'node-fetch';
+import createHttpsProxyAgent, { HttpsProxyAgent } from 'https-proxy-agent';
+
+export interface BaseConfig {
+  proxy?: string;
+}
 
 export class NotifyBase {
-  constructor() {}
+  proxyAgent?: HttpsProxyAgent;
+  constructor(config: BaseConfig) {
+    if (config.proxy) {
+      this.proxyAgent = createHttpsProxyAgent(config.proxy);
+    }
+  }
 
   /**
    * @param  {string} url
@@ -12,6 +22,9 @@ export class NotifyBase {
     const defaultOptions: RequestInit = {
       headers: { 'Content-Type': 'application/json' },
     };
+    if (this.proxyAgent) {
+      defaultOptions.agent = this.proxyAgent;
+    }
     const mergedOptions: RequestInit = {
       ...defaultOptions,
       ...options,

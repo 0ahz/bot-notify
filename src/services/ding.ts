@@ -1,9 +1,9 @@
 import crypto from 'crypto';
 
 import { INotifyBase } from '../interface/base';
-import { NotifyBase } from './base';
+import { BaseConfig, NotifyBase } from './base';
 
-export interface DingConfig {
+export interface DingConfig extends BaseConfig {
   token: string;
   secret?: string;
 }
@@ -72,7 +72,7 @@ export class DingNotify extends NotifyBase implements INotifyBase {
   private secret: string = '';
 
   constructor(config: DingConfig) {
-    super();
+    super(config);
     let { token, secret } = config;
     this.token = token;
     if (secret) {
