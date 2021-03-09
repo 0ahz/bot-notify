@@ -29,11 +29,16 @@ export class TelegramNotify extends NotifyBase implements INotifyBase {
     if (!message.chat_id && this.chat_id) {
       message.chat_id = this.chat_id;
     }
-    console.log(message);
     return await this.requestPost(this.apiUrl, message);
   }
 
-  async sendText(message: TelegramTextMessage): Promise<any> {
-    return await this.send(message);
+  async sendText(text: string | TelegramTextMessage): Promise<any> {
+    let msg: TelegramTextMessage = { text: '' };
+    if (typeof text === 'string') {
+      msg.text = text;
+    } else {
+      msg = text;
+    }
+    return await this.send(msg);
   }
 }

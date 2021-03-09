@@ -5,8 +5,8 @@
 目前支持：
 
 - [x] 企业微信群机器人
-- [x] 飞书自定义机器人、
-- [x] 钉钉自定义机器人接入
+- [x] 飞书自定义机器人
+- [x] 钉钉自定义机器人
 - [x] Telegram Bot
 
 ### 安装
@@ -72,7 +72,7 @@ npm install bot-notify
   // 其他类型消息 sendXXX
   ```
 
-### 钉钉自定义机器人接入
+### 钉钉自定义机器人
 
 - 文档：<https://developers.dingtalk.com/document/app/custom-robot-access>
 
