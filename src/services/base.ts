@@ -33,7 +33,16 @@ export class NotifyBase {
       mergedOptions.body = JSON.stringify(options.body);
     }
     const response = await fetch(url, mergedOptions);
-    return await response.json();
+    const contentType = response.headers.get('content-type');
+    let ret = null;
+    switch (contentType) {
+      case 'application/json':
+        ret = await response.json();
+        break;
+      default:
+        ret = await response.text();
+    }
+    return ret;
   }
 
   /**
