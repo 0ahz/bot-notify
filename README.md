@@ -8,6 +8,7 @@
 - [x] 飞书自定义机器人
 - [x] 钉钉自定义机器人
 - [x] Telegram Bot
+- [x] Telegram Bot
 
 ### 安装
 
@@ -125,5 +126,38 @@ npm install bot-notify
   TODO
 
 - 如果获取 `group` 或 `channel` 的 `chat_id`
+
+  TODO
+
+### Discord Webhook
+
+- 文档：[官方文档](https://discord.com/developers/docs/resources/webhook#execute-webhook)
+
+- 参数
+
+  ```ts
+  {
+    id: string, // {webhook.id}
+    token: string, // {webhook.token}
+  }
+  ```
+
+- 示例
+
+  ```js
+  import { DiscordNotify } from 'bot-notify';
+
+  const disNotify = new DiscordNotify({ id: 'xxx', token: 'xxx' });
+
+  await disNotify.sendText('Hello World');
+
+  // 其他类型消息 sendXXX
+  ```
+
+- 删除消息
+
+  TODO
+
+- 编辑消息
 
   TODO
