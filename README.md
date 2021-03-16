@@ -8,7 +8,7 @@
 - [x] 飞书自定义机器人
 - [x] 钉钉自定义机器人
 - [x] Telegram Bot
-- [x] Telegram Bot
+- [x] Discord Webhook
 
 ### 安装
 
