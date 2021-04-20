@@ -161,3 +161,7 @@ npm install bot-notify
 - 编辑消息
 
   TODO
+
+## License
+
+MIT License - [0ahz](https://github.com/0ahz)

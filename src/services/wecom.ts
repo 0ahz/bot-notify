@@ -1,105 +1,106 @@
-import { INotifyBase } from '../interface/base';
-import { BaseConfig, NotifyBase } from './base';
+import { BaseConfig, NotifyBase, INotifyBase, INotifyResult } from './base'
 
 export interface WecomConfig extends BaseConfig {
-  token: string;
+  token: string
 }
 
 export interface WecomTextMessage {
-  content: string;
-  mentioned_list?: Array<string>;
-  mentioned_mobile_list?: Array<string>;
+  content: string
+  mentioned_list?: Array<string>
+  mentioned_mobile_list?: Array<string>
 }
 
 export interface WecomMarkdownMessage {
-  content: string;
+  content: string
 }
 
 export interface WecomImageMessage {
-  base64: string;
-  md5: string;
+  base64: string
+  md5: string
 }
 
 export interface WecomNewsItemMessage {
-  title: string;
-  description: string;
-  url: string;
-  picurl: string;
+  title: string
+  description: string
+  url: string
+  picurl: string
 }
 
 export interface WecomNewsMessage {
-  articles: Array<WecomNewsItemMessage>;
+  articles: Array<WecomNewsItemMessage>
 }
 
 export interface WecomFileMessage {
-  media_id: string;
+  media_id: string
 }
 
 export interface WecomMessage {
-  msgtype: 'text' | 'markdown' | 'image' | 'news' | 'file';
-  text?: WecomTextMessage;
-  markdown?: WecomMarkdownMessage;
-  image?: WecomImageMessage;
-  news?: WecomNewsMessage;
-  file?: WecomFileMessage;
+  msgtype: 'text' | 'markdown' | 'image' | 'news' | 'file'
+  text?: WecomTextMessage
+  markdown?: WecomMarkdownMessage
+  image?: WecomImageMessage
+  news?: WecomNewsMessage
+  file?: WecomFileMessage
 }
 
 export class WecomNotify extends NotifyBase implements INotifyBase {
-  private apiUrl: string = '';
+  private apiUrl: string = ''
 
   /**
    * @param  {WecomConfig} config
    */
   constructor(config: WecomConfig) {
-    super(config);
-    this.apiUrl = `https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=${config.token}`;
+    super(config)
+    this.apiUrl = `https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=${config.token}`
   }
 
   /**
    * @param  {WecomMessage} message
    * @returns Promise
    */
-  async send(message: WecomMessage): Promise<any> {
-    const result = await this.requestPost(this.apiUrl, message);
+  async send(message: WecomMessage): Promise<INotifyResult> {
+    const result = await this.requestPost(this.apiUrl, message)
     return {
       success: result.errcode === 0,
       data: result,
-    };
+    }
   }
 
   /**
    * @param  {string|WecomTextMessage} text
    * @returns Promise
    */
-  async sendText(text: string | WecomTextMessage): Promise<any> {
+  async sendText(text: string | WecomTextMessage): Promise<INotifyResult> {
     let msg: WecomMessage = {
       msgtype: 'text',
-    };
+    }
     if (typeof text === 'string') {
       msg.text = {
         content: text,
-      };
+      }
     } else {
-      msg.text = text;
+      msg.text = text
     }
-    return await this.send(msg);
+    return await this.send(msg)
   }
 
   /**
    * @param  {string|WecomMarkdownMessage} markdown
    * @returns Promise
    */
-  async sendMarkdown(markdown: string | WecomMarkdownMessage): Promise<any> {
+  async sendMarkdown(
+    markdown: string | WecomMarkdownMessage
+  ): Promise<INotifyResult> {
     let msg: WecomMessage = {
       msgtype: 'markdown',
-    };
+    }
     if (typeof markdown === 'string') {
       msg.markdown = {
         content: markdown,
-      };
+      }
     } else {
-      msg.markdown = markdown;
+      msg.markdown = markdown
     }
-    return await this.send(msg);
+    return await this.send(msg)
   }
 }

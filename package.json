@@ -1,6 +1,6 @@
 {
   "name": "bot-notify",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "Keywords": [
     "bot",
@@ -8,9 +8,9 @@
   ],
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "rm -rf dist && tsc -p tsconfig.json",
     "release": "npm run build && npm publish --registry https://registry.npmjs.org/",
-    "example": "ts-node examples/index.ts"
+    "example": "esno examples/index.ts"
   },
   "repository": {
     "type": "git",
@@ -23,14 +23,15 @@
   },
   "homepage": "https://github.com/0ahz/bot-notify#readme",
   "devDependencies": {
-    "@types/node": "^14.14.31",
-    "@types/node-fetch": "^2.5.8",
+    "@types/node": "^14.14.41",
+    "@types/node-fetch": "^2.5.10",
+    "esno": "^0.5.0",
     "ts-node": "^9.1.1",
-    "typescript": "^4.2.2"
+    "typescript": "^4.2.4"
   },
   "dependencies": {
     "https-proxy-agent": "^5.0.0",
     "node-fetch": "^2.6.1",
-    "node-html-parser": "^3.0.4"
+    "node-html-parser": "^3.1.5"
   }
 }
